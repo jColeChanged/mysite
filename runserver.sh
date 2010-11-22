@@ -1,0 +1,1 @@
+sh ~/Programming/appengine-java-sdk-1.3.8/bin/dev_appserver.sh ~/Programming/mysite/resources/

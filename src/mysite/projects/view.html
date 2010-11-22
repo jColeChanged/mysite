@@ -1,0 +1,65 @@
+<html><head>
+<style type="text/css">
+html {
+line-height: 1.5em;
+text-size: 14px;
+font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
+}
+.projects {
+width:720px;
+margin-left:50px;
+}
+.project {
+background-image:url('file:///home/joshua/Pictures/workingonit.png');
+background-repeat:no-repeat;
+margin:20px 0px;
+border:solid;
+}
+h2 {
+display: inline;
+margin: 0px;
+padding: 0px;
+}
+.project p {
+margin: 0px;
+padding: 0px;
+}
+.details {
+display: none;
+}
+.projects a {
+float:right;
+}
+</style>
+</head><body>
+<div class="projects">
+  <h1>Projects</h1>
+  <div class="project">
+    <h2>Unscramble It</h2>
+    <a href="http://anagramscramble.appspot.com/">site</a>
+    <p class="pitch">Race the clock and your friends to unscramble words, learning as you go. Solve words quickly to gain more points! Can you claim the highest score?</p>
+    <div class="details">
+Motivation
+
+I had played a similar game with a friend and found it to be a lot of fun so when I wanted to write a program just for kicks and couldn't think of anything better to do, I latched onto this. As it turns out I found better things to work on  so right now this project isn't really that important to me. However, if you play it make sure to let me know. I don't want to leave focus bugs and cross browser inconsitency in something people are actually going to use.
+
+Technical
+
+Server side this python app is using the django-norel framework and running on AppEngine. Client side it is making use of JQuery and JQueryUI. Word info is being fetched through the wordnik API.
+    </div>
+  </div>
+  <div class="project">
+    <h2>Personal Site</h2><a href="http://personalsite.appspot.com/">site</a>
+    <p class="pitch">My projects, blog, and anything else I decide to share in one convenient location.</p>
+    <div class="details">
+Motivation
+
+I wanted to create something useful for myself.
+
+Technical
+
+Clojure on google appegnine. Compojure with enlive for templates.
+    </div>
+  </div>
+</div>
+</body></html>
