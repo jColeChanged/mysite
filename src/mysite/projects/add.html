@@ -4,14 +4,26 @@
   <body>
     <h1>Add a project</h1>
     <form method="POST" action="/projects/add/">
-      <label for="title">Title</label><br />
-      <input name="title" type="text"></input><br />
-      <label for="pitch">Pitch</label><br />
-      <input name="pitch" type="text"></input><br />
-      <label for="details">Details</label><br />
-      <textarea name="details" rows="10" cols="80"></textarea><br />
-      <label for="priority">Priority</label><br />
-      <input name="priority" type="text"></input><br />
+      <div id="title">
+	<label for="title">Title</label><br />
+	<input name="title" type="text"></input>
+	<p class="error"></p>
+      </div>
+      <div id="pitch">
+	<label for="pitch">Pitch</label><br />
+	<input name="pitch" type="text"></input><br />
+	<p class="error"></p>
+      </div>
+      <div id="details">
+	<label for="details">Details</label><br />
+	<textarea id="details" name="details" rows="10" cols="80"></textarea><br />
+	<p class="error"></p>
+      </div>
+      <div id="priority">
+	<label for="priority">Priority</label><br />
+	<input id="priority" name="priority" type="text"></input><br />
+	<p class="error"></p>
+      </div>
       <input type="submit" value="Add project"></input>
     </form>
   <body>
