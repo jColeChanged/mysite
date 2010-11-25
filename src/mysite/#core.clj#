@@ -70,6 +70,7 @@
 
 ;; Routes ==================================================================
 (defroutes mysite-app-handler
+  (GET "/" [] (
   (GET "/projects/add/" [] (add-project-template 0))
   (POST "/projects/add/" {params :params} (show-project params))
   (GET "/projects/view/" [] (view-projects))

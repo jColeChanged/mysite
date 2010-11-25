@@ -1,0 +1,39 @@
+html {
+    line-height: 1.5em;
+    font-size: 20px;
+    font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
+}
+ 
+a {
+    text-decoration:none;
+    font-size:50px;
+    color: #545753;
+}
+
+/* Navigation Bar =============================================================
+Get the link list in the middle of the page to flow vertically and add
+a space between each link so the words don't run into each other.
+==============================================================================*/
+ul {
+    display: inline;
+}
+ul li {
+    display: block;
+    float: left;
+    margin-right:20px;
+}
+.emphasis {
+color: #545753;
+font-weight: bold;
+}
+
+
+img {
+float: left;
+margin: 10 10 0 0;
+}
+
+#vertical_center {
+margin: 150px auto;
+width: 720px;
+}
