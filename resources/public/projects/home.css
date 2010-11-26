@@ -1,0 +1,50 @@
+/* By Joshua Cole, use it if you want too. */
+
+/* Layout and Flow ============================================================
+Place the content *close* to the middle of the page and make sure the image
+and the text don't clash with each other.
+=============================================================================*/ 
+#vertical_center {
+    margin: 150px auto;
+    width: 720px;
+}
+
+img {
+    float: left;
+    margin: 10 10 0 0;
+}
+
+/* Typography =================================================================
+Get everything readable. Add a bit of bold gray so things don't look too bland.
+==============================================================================*/
+html {
+    line-height: 1.5em;
+    font-size: 20px;
+    font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
+}
+
+.emphasis {
+    font-weight: bold;
+    color: #545753;
+}
+
+/* Navigation Bar =============================================================
+Get the link list in the middle of the page to flow vertically and add
+a space between each link so the words don't run into each other. Also get the
+links to have a style consistent with the rest of the page.
+==============================================================================*/
+ul {
+    display: inline;
+}
+
+ul li {
+    display: block;
+    float: left;
+    margin-right:20px;
+}
+
+a {
+    text-decoration:none;
+    font-size:50px;
+    color: #545753;
+}

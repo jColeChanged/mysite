@@ -1,17 +1,9 @@
 # mysite
 
-FIXME: write description
-
-## Usage
-
-FIXME: write
-
-## Installation
-
-FIXME: write
+Just a personal website coded in clojure, nothing special.
 
 ## License
 
-Copyright (C) 2010 FIXME
+Copyright (C) 2010 Joshua Cole
 
 Distributed under the Eclipse Public License, the same as Clojure.
