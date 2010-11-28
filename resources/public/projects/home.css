@@ -39,13 +39,13 @@ a space between each link so the words don't run into each other. Also get the
 links to have a style consistent with the rest of the page.
 ==============================================================================*/
 ul {
+    margin: 0px;
+    padding: 0px;
     display: inline;
 }
 
 ul li {
-    display: block;
-    float: left;
-    margin-right:20px;
+    display: inline;
 }
 
 a {
