@@ -5,22 +5,23 @@ Set up two columns.
 ==============================================================================*/
 #container {
     overflow:hidden;
-    width:800px;
+    width:900px;
 }
 
 #content{
     width:600px;
-    border-right:200px solid white;
     /* The width and color of the rail */
-    margin-right:-200px; /* Hat tip to Ryan Brill */
+    margin-right:-250px; /* Hat tip to Ryan Brill */
     float:left;
     margin-left: 50px;
+    margin-top: 20px;
 }
 
 #rail {
-    width:150px;
-    float:left;
-    padding-left: 50px;
+    width:250px;
+    float:right;
+    margin-left: 50px;
+    margin-top: 20px;
 }
 
 /* Typography =================================================================
@@ -44,15 +45,13 @@ a {
     text-decoration: none;
     color: blue;
     font-size: 16px;
-    margin: 0;
-    padding:0;
 }
 /* Projects Styling ============================================================
 Make the projects compact and ensure that the link to the site is in the same
 place every time.
 ==============================================================================*/
 .project {
-    margin:20 0px;
+    margin: 0px 0px 20px 0px;
 }
 
 h2 {
@@ -66,7 +65,7 @@ h2 {
     padding: 0px;
 }
 
-.projects a {
+.project a {
     float: right;
 }
 
@@ -75,7 +74,7 @@ Make the view of the projects details distinct from all the other elements. Also
 ensure that the details don't start out visible.
 ==============================================================================*/
 .details {
-    background-color:#D8D8D8;
+    background-color: #D8D8D8;
     padding: 10px;
     display: none;
 }
