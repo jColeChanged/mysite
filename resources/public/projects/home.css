@@ -23,9 +23,12 @@ img {
 Get everything readable. Add a bit of bold gray so things don't look too bland.
 ==============================================================================*/
 html {
-    line-height: 1.5em;
     font-size: 20px;
     font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
+}
+
+p {
+    line-height: 1.5em;
 }
 
 .emphasis {

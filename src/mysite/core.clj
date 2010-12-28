@@ -1,10 +1,14 @@
 (ns mysite.core
-  (:use compojure.core, ring.middleware.keyword-params,
-	ring.middleware.params, ring.util.response, pour.core, pour.validators)
-  (:require [compojure.route :as route])
-  (:require [net.cgrand.enlive-html :as html])
-  (:require [appengine-magic.core :as ae])
-  (:require [appengine-magic.services.datastore :as ds]))
+  (:use compojure.core
+	ring.middleware.keyword-params
+	ring.middleware.params
+	ring.util.response
+	pour.core
+	pour.validators)
+  (:require [compojure.route :as route]
+	    [net.cgrand.enlive-html :as html]
+	    [appengine-magic.core :as ae]
+	    [appengine-magic.services.datastore :as ds]))
 
 ;; Models ==================================================================
 (ds/defentity Project [^:key title, url, pitch, details, priority])
