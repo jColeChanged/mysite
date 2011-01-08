@@ -8,7 +8,15 @@
   (:require [compojure.route :as route]
 	    [net.cgrand.enlive-html :as html]
 	    [appengine-magic.core :as ae]
-	    [appengine-magic.services.datastore :as ds]))
+	    [appengine-magic.services.datastore :as ds]
+	    [appengine-magic.services.user :as au]))
+
+(defn require-admin
+  [func]
+  (fn [& args]
+    (if (and (au/user-logged-in?) (au/user-admin?))
+      (apply func args)
+      (redirect (au/login-url)))))
 
 ;; Models ==================================================================
 (ds/defentity Project [^:key title, url, pitch, details, priority])
@@ -66,6 +74,8 @@
   [:.projects] (html/content (map project-snippet projects)))
 
 ;; Views ===================================================================
+
+
 (defn view-homepage
   []
   (view-homepage-template))
@@ -78,16 +88,20 @@
 	(add-project-to-store (:values form-data))
 	(redirect "/projects/view/"))
       (add-project-template form-data))))
+(def add-project-view (require-admin add-project))
 
 (defn view-projects
   []
   (view-projects-template (ds/query :kind Project)))
 
 ;; Routes ==================================================================
+(defroutes admin-routes
+  (GET "/projects/add/" [] (add-project-view {}))
+  (POST "/projects/add/" {params :params} (add-project-view params)))
+ 
 (defroutes mysite-app-handler
+  admin-routes
   (GET "/" [] (view-homepage))
-  (GET "/projects/add/" [] (add-project-template 0))
-  (POST "/projects/add/" {params :params} (add-project params))
   (GET "/projects/view/" [] (view-projects))
   (route/not-found "Page not found."))
 
