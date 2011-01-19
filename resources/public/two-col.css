@@ -1,0 +1,44 @@
+body{
+margin:0;
+padding:0;
+line-height: 1.5em;
+}
+
+#topsection{
+height: 30px; /*Height of top section*/
+}
+
+#topsection h1{
+margin: 0;
+padding-top: 15px;
+}
+
+#contentwrapper{
+float: left;
+width: 100%;
+}
+
+#contentcolumn{
+margin-right: 200px; /*Set right margin to RightColumnWidth*/
+padding-right: 400px;
+padding-left: 100px;
+}
+
+#rightcolumn{
+float: left;
+width: 200px; /*Width of right column in pixels*/
+margin-left: -200px; /*Set left margin to -(RightColumnWidth) */
+}
+
+#footer{
+clear: left;
+width: 100%;
+color: #FFF;
+text-align: center;
+padding: 4px 0;
+}
+
+.innertube{
+margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+margin-top: 0;
+}
