@@ -19,21 +19,8 @@ img {
     margin: 10 10 0 0;
 }
 
-/* Typography =================================================================
-Get everything readable. Add a bit of bold gray so things don't look too bland.
-==============================================================================*/
-html {
-    font-size: 20px;
-    font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
-}
-
 p {
-    line-height: 1.5em;
-}
-
-.emphasis {
-    font-weight: bold;
-    color: #545753;
+    line-height: 1.6em;
 }
 
 /* Navigation Bar =============================================================
@@ -51,7 +38,7 @@ ul li {
     display: inline;
 }
 
-a {
+#nav_bar a {
     text-decoration:none;
     font-size:50px;
     color: #545753;

@@ -49,6 +49,26 @@
   :url [required "URL is required."]
   :embed [required "Must supply text to embed"])
 ;; Templates ===============================================================
+(defmacro maybe-substitute
+  ([expr] `(if-let [x# ~expr] (html/substitute x#) identity))
+  ([expr & exprs] `(maybe-substitute (or ~expr ~@exprs))))
+
+(defmacro maybe-content
+  ([expr] `(if-let [x# ~expr] (html/content x#) identity))
+  ([expr & exprs] `(maybe-content (or ~expr ~@exprs))))
+
+(defmacro maybe-substitute
+  ([expr] `(if-let [x# ~expr] (html/substitute x#) identity))
+  ([expr & exprs] `(maybe-substitute (or ~expr ~@exprs))))
+
+(defmacro maybe-html-content
+  ([expr] `(if-let [x# ~expr] (html/html-content x#) identity))
+  ([expr & exprs] `(maybe-html-content (or ~expr ~@exprs))))
+
+(html/defsnippet footer "mysite/resources/footer.html" [:script]
+  []
+  [] [])
+
 (defn set-input
   [id form]
   (html/set-attr :value (str (id (:values form)))))
@@ -57,7 +77,10 @@
   [id form]
   (html/html-content (id (:errors form))))
 
-(html/deftemplate view-homepage-template "mysite/projects/home.html" [] [] [])
+(html/deftemplate view-homepage-template "mysite/projects/home.html"
+  []
+  [:#footer] (html/content (footer)))
+
 (html/deftemplate add-project-template "mysite/projects/add.html"
   [form-data]
   [:div#title :input] (set-input :title form-data)
@@ -69,7 +92,7 @@
 (def *project-selector* [[:.project html/first-child]])
 (html/defsnippet project-snippet "mysite/projects/view.html" *project-selector*
   [project]
-  [:h2] (html/html-content (.title project))
+  [:h2 :em] (html/html-content (.title project))
   [:a] (html/set-attr :href (.url project))
   [:p.pitch] (html/html-content (.pitch project))
   [:div.details] (html/html-content (.details project)))
@@ -84,11 +107,16 @@
 
 (html/deftemplate view-projects-template "mysite/projects/view.html"
   [projects]
-  [:.projects] (html/content (map project-snippet projects)))
+  [:.projects] (html/content (map project-snippet projects))
+  [:#footer] (html/content (footer)))
 
-(html/deftemplate view-extendable-home-template "mysite/extendable/home.html"
-  [games]
-  [:#notfree] (html/content (map not-free-snippet games)))
+
+(html/deftemplate extendable-template "mysite/extendable/home.html"
+  [{:keys [body games]}]
+  [:#contentcolumn :.innertube] (maybe-html-content
+				 (if (map? body) (.embed body)))
+  [:#notfree] (html/content (map not-free-snippet games))
+  [:#footer] (html/content (footer)))
 
 (html/deftemplate add-extendable-game-template "mysite/extendable/add.html"
   [game]
@@ -96,8 +124,6 @@
   [:#url] (set-input :url game)
   [:#embed] (html/html-content (:embed (:values game))))
 ;; Views ===================================================================
-
-
 (defn view-homepage
   []
   (view-homepage-template))
@@ -128,7 +154,19 @@
 
 (defn view-extendable-home
   []
-  (view-extendable-home-template (ds/query :kind ExtendableGame)))
+  (extendable-template
+   {:body nil
+    :games (ds/query :kind ExtendableGame)}))
+
+(defn not-free-game-view
+  [name]
+  (let [game (first (ds/query :key name :kind ExtendableGame))]
+    (if (nil? game)
+      404
+      (extendable-template
+       {:body game
+	:games (ds/query :kind ExtendableGame)}))))
+
 ;; Routes ==================================================================
 (defroutes extendable-admin-routes
   (ANY "/extendable/add/" {params :params}
@@ -136,6 +174,7 @@
 
 (defroutes extendable-routes
   (GET "/extendable/" [] (view-extendable-home))
+  (GET "/extendable/notfree/" {{name "name"} :params} (not-free-game-view name))
   extendable-admin-routes)
 
 (defroutes project-admin-routes
@@ -150,7 +189,7 @@
   (GET "/" [] (view-homepage))
   project-routes
   extendable-routes
-  (route/not-found "Page not found."))
+  (route/not-found 404))
 
 (def mysite-app-handler
      (-> mysite-app-handler

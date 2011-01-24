@@ -3,7 +3,7 @@ Get everything readable. Add a bit of bold gray so things don't look too bland.
 Also make the links larger and less dynamic.
 ==============================================================================*/
 html {
-    line-height: 1.5em;
+/*    line-height: 1.5em; */
     font-size: 20px;
     font-family:Georgia,Utopia,Palatino,'Palatino Linotype',serif;
     margin: 0px;

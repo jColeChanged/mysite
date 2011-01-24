@@ -1,7 +1,6 @@
 body{
 margin:0;
 padding:0;
-line-height: 1.5em;
 }
 
 #topsection{
@@ -30,13 +29,6 @@ width: 200px; /*Width of right column in pixels*/
 margin-left: -200px; /*Set left margin to -(RightColumnWidth) */
 }
 
-#footer{
-clear: left;
-width: 100%;
-color: #FFF;
-text-align: center;
-padding: 4px 0;
-}
 
 .innertube{
 margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
