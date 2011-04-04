@@ -1,5 +1,3 @@
-/* By Joshua Cole, use it if you want too. */
-
 /* Layout and Flow ============================================================
 Place the content *close* to the middle of the page and make sure the image
 and the text don't clash with each other.
@@ -15,8 +13,8 @@ and the text don't clash with each other.
 }
 
 img {
-    float: left;
-    margin: 10 10 0 0;
+    padding: 10px 10px 0px 0px; 
+    float:left;
 }
 
 p {
